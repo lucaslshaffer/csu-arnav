@@ -112,11 +112,11 @@ var AugmentedRealityViewer = function(getPOI, options) {
 		
 		var y = self.poi[i].y;
 		ctx.beginPath();
-		ctx.moveTo(overlay.width / 3, overlay.height * 1.1);
+		ctx.moveTo(overlay.width / 2, overlay.height * 1.1);
 		ctx.lineTo(x,y);
 		ctx.stroke();
 		ctx.font="10px Arial";
-		ctx.fillText(Math.floor(self.poi[i].distance / 100) / 10 + 'ft',(overlay.width / 2) + (x - overlay.width) / 2, overlay.height + (y - overlay.height)/2);
+		ctx.fillText(Math.floor(self.poi[i].distance / 100) / 3280 + 'ft',(overlay.width / 2) + (x - overlay.width) / 2, overlay.height + (y - overlay.height)/2);
 		ctx.font="15px Arial";
 		ctx.fillText(self.poi[i].label,x,y);
 	    }
