@@ -112,7 +112,7 @@ var AugmentedRealityViewer = function(getPOI, options) {
 		
 		var y = self.poi[i].y;
 		ctx.beginPath();
-		ctx.moveTo(overlay.width / 2, overlay.height * 1.1);
+		ctx.moveTo(overlay.width / 3, overlay.height * 1.1);
 		ctx.lineTo(x,y);
 		ctx.stroke();
 		ctx.font="10px Arial";
