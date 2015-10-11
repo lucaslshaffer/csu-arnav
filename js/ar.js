@@ -116,7 +116,7 @@ var AugmentedRealityViewer = function(getPOI, options) {
 		ctx.lineTo(x,y);
 		ctx.stroke();
 		ctx.font="10px Arial";
-		ctx.fillText(Math.floor(self.poi[i].distance / 100) / 32800 + 'ft',(overlay.width / 2) + (x - overlay.width) / 2, overlay.height + (y - overlay.height)/2);
+		ctx.fillText(Math.floor(self.poi[i].distance / 100) / 10 + 'ft',(overlay.width / 2) + (x - overlay.width) / 2, overlay.height + (y - overlay.height)/2);
 		ctx.font="15px Arial";
 		ctx.fillText(self.poi[i].label,x,y);
 	    }
@@ -132,7 +132,41 @@ var AugmentedRealityViewer = function(getPOI, options) {
 	if (navigator.getUserMedia) {
 		
 	    
-		navigator.getUserMedia({video:true, toString: function(){return 'video';}}, this.addStream, console.log);
+		//navigator.getUserMedia({video:true, toString: function(){return 'video';}}, this.addStream, console.log);
+		MediaStreamTrack.getSources(function(sourceInfos) {
+		  var audioSource = null;
+		  var videoSource = null;
+		
+		  for (var i = 0; i != sourceInfos.length; ++i) {
+			var sourceInfo = sourceInfos[i];
+			if (sourceInfo.kind === 'audio') {
+			  console.log(sourceInfo.id, sourceInfo.label || 'microphone');
+		
+			  audioSource = sourceInfo.id;
+			} else if (sourceInfo.kind === 'video') {
+			  console.log(sourceInfo.id, sourceInfo.label || 'camera');
+		
+			  videoSource = sourceInfo.id;
+			} else {
+			  console.log('Some other kind of source: ', sourceInfo);
+			}
+		  }
+		
+		  sourceSelected(audioSource, videoSource);
+		});
+		
+		function sourceSelected(audioSource, videoSource) {
+		  var constraints = {
+			audio: {
+			  optional: [{sourceId: audioSource}]
+			},
+			video: {
+			  optional: [{sourceId: videoSource}]
+			}
+		  };
+		
+		  navigator.getUserMedia(constraints, this.addStream, console.log);
+		}
 	}	
 	navigator.geolocation.getCurrentPosition(self.setPosition);
 	window.addEventListener("deviceorientation", function(e) {
