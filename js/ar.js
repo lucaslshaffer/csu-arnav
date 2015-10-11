@@ -132,14 +132,14 @@ var AugmentedRealityViewer = function(getPOI, options) {
 	if (navigator.getUserMedia) {
 		
 	    
-		navigator.getUserMedia({video:true, toString: function(){return 'video';}}, 
-			 function(stream) {
-			 var video = document.querySelector('video');
-			 video.src = window.URL.createObjectURL(stream);
-			 video.onloadedmetadata = function(e) {
-			   video.play();
-			 };
-         }, console.log);
+		//navigator.getUserMedia({video:true, toString: function(){return 'video';}}, 
+//			 function(stream) {
+//			 var video = document.querySelector('video');
+//			 video.src = window.URL.createObjectURL(stream);
+//			 video.onloadedmetadata = function(e) {
+//			   video.play();
+//			 };
+//         }, console.log);
 		
 	}	
 	navigator.geolocation.getCurrentPosition(self.setPosition);
