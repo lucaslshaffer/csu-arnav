@@ -116,7 +116,7 @@ var AugmentedRealityViewer = function(getPOI, options) {
 		ctx.lineTo(x,y);
 		ctx.stroke();
 		ctx.font="10px Arial";
-		ctx.fillText(Math.round(Math.round(self.poi[i].distance / 100) / 10 * 3280.84) + 'feet',(overlay.width / 2) + (x - overlay.width) / 2, overlay.height + (y - overlay.height)/2);
+		ctx.fillText(Math.round(Math.round(self.poi[i].distance / 100) / 10 * 3280.84) + 'ft',(overlay.width / 2) + (x - overlay.width) / 2, overlay.height + (y - overlay.height)/2);
 		ctx.font="15px Arial";
 		ctx.fillText(self.poi[i].label,x,y);
 	    }
@@ -132,7 +132,14 @@ var AugmentedRealityViewer = function(getPOI, options) {
 	if (navigator.getUserMedia) {
 		
 	    
-		navigator.getUserMedia({video:true, toString: function(){return 'video';}}, this.addStream, console.log);
+		navigator.getUserMedia({video:true, toString: function(){return 'video';}}, 
+			 function(stream) {
+			 var video = document.querySelector('video');
+			 video.src = window.URL.createObjectURL(stream);
+			 video.onloadedmetadata = function(e) {
+			   video.play();
+			 };
+         }, console.log);
 		
 	}	
 	navigator.geolocation.getCurrentPosition(self.setPosition);
