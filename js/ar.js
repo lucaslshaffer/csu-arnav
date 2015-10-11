@@ -116,7 +116,7 @@ var AugmentedRealityViewer = function(getPOI, options) {
 		ctx.lineTo(x,y);
 		ctx.stroke();
 		ctx.font="10px Arial";
-		ctx.fillText(Math.round(Math.round(self.poi[i].distance / 100) / 10 * 3280.84) + 'm',(overlay.width / 2) + (x - overlay.width) / 2, overlay.height + (y - overlay.height)/2);
+		ctx.fillText(Math.round(Math.round(self.poi[i].distance / 100) / 10 * 3280.84) + 'feet',(overlay.width / 2) + (x - overlay.width) / 2, overlay.height + (y - overlay.height)/2);
 		ctx.font="15px Arial";
 		ctx.fillText(self.poi[i].label,x,y);
 	    }
