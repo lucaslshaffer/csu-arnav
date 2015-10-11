@@ -130,7 +130,16 @@ var AugmentedRealityViewer = function(getPOI, options) {
 				   navigator.webkitGetUserMedia || navigator.msGetUserMedia);
 	
 	if (navigator.getUserMedia) {
-	    navigator.getUserMedia({video:true, toString: function(){return 'video';}}, this.addStream, console.log);
+		var constraints = {
+		  audio: {
+			optional: [{sourceId: audioSource}]
+		  },
+		  video: {
+			optional: [{sourceId: videoSource}]
+		  }
+		};
+	    navigator.getUserMedia(constraints, this.addStream, console.log);
+		//navigator.getUserMedia({video:true, toString: function(){return 'video';}}, this.addStream, console.log);
 	}	
 	navigator.geolocation.getCurrentPosition(self.setPosition);
 	window.addEventListener("deviceorientation", function(e) {
