@@ -1,6 +1,6 @@
 [
-{"latitude":90,"longitude":0, "label":"North Pole"},
-{"latitude":-90,"longitude":0, "label":"South Pole"},
-{"latitude":48.85825,"longitude":2.2945, "label":"Tour Eiffel"},
-{"latitude":37.17687,"longitude":-3.58988,"label":"Alhambra"}
+{"latitude":32.500790,"longitude":-84.942099, "label":"Arnold Hall"},
+{"latitude":32.504391,"longitude":-84.940211, "label":"Lumpkin Center"},
+{"latitude":32.500953,"longitude":-84.941085, "label":"Library"},
+{"latitude":32.500044,"longitude":-84.940077,"label":"Stanley Hall"}
 ]
